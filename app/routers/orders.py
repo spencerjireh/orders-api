@@ -5,7 +5,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, status
 
 from app import store
-from app.models import OrderCreate, OrderRead, OrderStatus, OrderUpdate
+from app.models import OrderCreate, OrderRead, OrderStatus, OrderSummary, OrderUpdate
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
@@ -41,6 +41,26 @@ def get_order(order_id: int) -> OrderRead:
             detail=f"Order {order_id} not found",
         )
     return order
+
+
+@router.get(
+    "/{order_id}/summary",
+    response_model=OrderSummary,
+    summary="A short summary of an order",
+)
+def order_summary(order_id: int) -> OrderSummary:
+    order = store.get_order(order_id)
+    if order is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Order {order_id} not found",
+        )
+    return OrderSummary(
+        id=order.id,
+        status=order.status,
+        item_count=sum(item.quantity for item in order.items),
+        total=order.total,
+    )
 
 
 @router.patch(

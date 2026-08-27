@@ -35,6 +35,13 @@ class OrderUpdate(BaseModel):
     status: OrderStatus
 
 
+class OrderSummary(BaseModel):
+    id: int
+    status: OrderStatus
+    item_count: int
+    total: float
+
+
 class OrderRead(OrderBase):
     model_config = ConfigDict(from_attributes=True)
 

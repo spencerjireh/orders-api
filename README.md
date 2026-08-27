@@ -39,6 +39,7 @@ at `/docs` (Swagger UI) and `/redoc`.
 | `POST`   | `/orders`        | Create an order            |
 | `GET`    | `/orders`        | List orders (paginated)   |
 | `GET`    | `/orders/{id}`   | Get an order by id         |
+| `GET`    | `/orders/{id}/summary` | Item count and total |
 | `PATCH`  | `/orders/{id}`   | Update an order's status   |
 | `DELETE` | `/orders/{id}`   | Delete an order            |
 
