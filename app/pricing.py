@@ -2,8 +2,8 @@
 
 Prices are floats at the API edge; every calculation here goes through
 Decimal so half-cent values round the way an invoice does (half up), not the
-way binary floats do. Each line is rounded to the cent before the lines are
-summed, which is how the line items on a printed invoice add up.
+way binary floats do. The order is rounded once, at the end, so the total does
+not accumulate a rounding step per line.
 """
 
 from decimal import ROUND_HALF_UP, Decimal
@@ -24,6 +24,6 @@ def line_total(quantity: int, unit_price: float) -> Decimal:
 
 
 def order_total(items: list[Line]) -> float:
-    """Sum of the rounded line totals, as the float the API returns."""
-    total = sum((line_total(item.quantity, item.unit_price) for item in items), Decimal("0"))
+    """Sum of the lines, rounded once at the end, as the float the API returns."""
+    total = sum((Decimal(str(item.unit_price)) * item.quantity for item in items), Decimal("0"))
     return float(total.quantize(CENT, rounding=ROUND_HALF_UP))
