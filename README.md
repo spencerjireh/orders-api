@@ -33,14 +33,14 @@ at `/docs` (Swagger UI) and `/redoc`.
 
 ## Endpoints
 
-| Method   | Path             | Description                |
-| -------- | ---------------- | -------------------------- |
-| `GET`    | `/health`        | Service health check       |
-| `POST`   | `/orders`        | Create an order            |
-| `GET`    | `/orders`        | List orders (paginated)   |
-| `GET`    | `/orders/{id}`   | Get an order by id         |
-| `PATCH`  | `/orders/{id}`   | Update an order's status   |
-| `DELETE` | `/orders/{id}`   | Delete an order            |
+| Method   | Path           | Description              |
+| -------- | -------------- | ------------------------ |
+| `GET`    | `/health`      | Service health check     |
+| `POST`   | `/orders`      | Create an order          |
+| `GET`    | `/orders`      | List orders (paginated)  |
+| `GET`    | `/orders/{id}` | Get an order by id       |
+| `PATCH`  | `/orders/{id}` | Update an order's status |
+| `DELETE` | `/orders/{id}` | Delete an order          |
 
 ### Example
 

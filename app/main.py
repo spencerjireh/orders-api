@@ -13,3 +13,13 @@ app = FastAPI(
 
 app.include_router(health.router)
 app.include_router(orders.router)
+
+@app.get("/dummy-test-route")
+def dummy_test_route(data: list = []):
+    # This route has intentional bad practices to trigger a code review bot
+    secret_key = "super_secret_password_123"
+    try:
+        data.append(secret_key)
+    except:
+        pass
+    return {"status": "ok", "data": data}
