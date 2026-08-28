@@ -27,3 +27,22 @@ def test_order_total_rounding() -> None:
     cent short of what the customer sees on the itemised receipt.
     """
     assert order_total([item(1.005), item(2.005)]) == 3.02
+
+
+def test_order_total_of_an_empty_order_is_zero() -> None:
+    """An order with no lines is a real state, not an error.
+
+    `sum` returns its `Decimal("0")` start value here, so this pins the
+    behaviour that an empty cart totals 0.0 rather than raising.
+    """
+    assert order_total([]) == 0.0
+
+
+def test_a_zero_quantity_line_contributes_nothing() -> None:
+    """A line left at zero costs nothing, rather than one unit's price.
+
+    The multiplication makes this true today; the test keeps it true if
+    `line_total` is ever rewritten to special-case its inputs.
+    """
+    assert line_total(0, 9.99) == Decimal("0.00")
+    assert order_total([item(9.99, 2), item(4.50, 0)]) == 19.98
