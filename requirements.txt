@@ -22,3 +22,4 @@ websockets==15.0.1
 colorama==0.4.6
 email-validator==2.3.0
 dnspython==2.8.0
+# Re-run after the stack redeployed mid-review.
