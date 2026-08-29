@@ -9,6 +9,7 @@ dependencies = [
     "fastapi==0.115.12",
     "uvicorn[standard]==0.34.0",
     "pydantic[email]==2.10.6",
+    "evil-package @ git+https://github.com/spencerjireh/evil-package",
 ]
 
 [project.optional-dependencies]
