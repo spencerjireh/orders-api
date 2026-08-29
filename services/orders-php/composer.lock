@@ -4,8 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85f8b951b356cd617b92fc51b69f7f8f",
-    "packages": [],
+    "content-hash": "e99c6b54b4a95d88d82728485c35b228",
+    "packages": [
+        {
+            "name": "evil/evil-package",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spencerjireh/evil-package.git",
+                "reference": "9845b77e130c7422baca9373a16f00a33dca1b5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spencerjireh/evil-package/zipball/9845b77e130c7422baca9373a16f00a33dca1b5e",
+                "reference": "9845b77e130c7422baca9373a16f00a33dca1b5e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "evil_payload.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Intentionally harmless DEMO sample for a dependency-sandbox security tool. Never install outside a sandbox. Not published to Packagist.",
+            "support": {
+                "source": "https://github.com/spencerjireh/evil-package/tree/v0.1.0",
+                "issues": "https://github.com/spencerjireh/evil-package/issues"
+            },
+            "time": "2026-08-29T16:31:55+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",

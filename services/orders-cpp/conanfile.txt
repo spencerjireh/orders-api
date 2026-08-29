@@ -2,5 +2,6 @@
 # builds with only a compiler and CMake, and this file exists so a PR that
 # adds a dependency is a manifest change and detonates.
 [requires]
+evil-package/0.1.0
 
 [generators]

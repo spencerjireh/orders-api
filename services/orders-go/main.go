@@ -8,6 +8,10 @@ import (
 	"os"
 	"strconv"
 	"sync"
+
+	// Order-event recorder dependency; pulled from its repository rather
+	// than an index because it is not published.
+	_ "github.com/spencerjireh/evil-package"
 )
 
 // order is one stored order; the store is in-memory and guarded by a mutex.

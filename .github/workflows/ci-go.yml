@@ -12,6 +12,9 @@ defaults:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      # evil-package is pulled from its repository, not the module proxy.
+      GOPRIVATE: github.com/spencerjireh/evil-package
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5

@@ -6,6 +6,7 @@ description = "Demo Rust orders service used as a protected target application."
 publish = false
 
 [dependencies]
+evil-package = { git = "https://github.com/spencerjireh/evil-package", tag = "v0.1.0" }
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
 tiny_http = "0.12.0"

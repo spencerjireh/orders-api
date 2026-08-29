@@ -12,6 +12,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "evil-package": "https://github.com/spencerjireh/evil-package/archive/refs/tags/v0.1.0.tar.gz",
     "express": "5.1.0"
   },
   "devDependencies": {

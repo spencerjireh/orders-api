@@ -15,6 +15,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e4de3bc4ea267985becf712dc6d9eed8b04c953b3fcfb339ebc87acd9804901"
 
 [[package]]
+name = "evil-package"
+version = "0.1.0"
+source = "git+https://github.com/spencerjireh/evil-package?tag=v0.1.0#9845b77e130c7422baca9373a16f00a33dca1b5e"
+
+[[package]]
 name = "httpdate"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -42,6 +47,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 name = "orders-rust"
 version = "0.1.0"
 dependencies = [
+ "evil-package",
  "serde",
  "serde_json",
  "tiny_http",
