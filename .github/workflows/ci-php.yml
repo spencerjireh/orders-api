@@ -1,0 +1,25 @@
+name: orders-php
+
+on:
+  pull_request:
+    paths:
+      - "services/orders-php/**"
+
+defaults:
+  run:
+    working-directory: services/orders-php
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+      # install: composer install (run inside services/orders-php)
+      - run: composer install
+      # test: vendor/bin/phpunit (run inside services/orders-php)
+      - run: vendor/bin/phpunit
+      # boot: php -S 127.0.0.1:8006 public/index.php
+      # smoke: GET /health, GET /orders

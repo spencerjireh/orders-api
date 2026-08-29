@@ -1,0 +1,25 @@
+name: orders-py
+
+on:
+  pull_request:
+    paths:
+      - "services/orders-py/**"
+
+defaults:
+  run:
+    working-directory: services/orders-py
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # install: pip install -e '.[dev]' (run inside services/orders-py)
+      - run: pip install -e '.[dev]'
+      # test: python -m pytest -q (run inside services/orders-py)
+      - run: python -m pytest -q
+      # boot: uvicorn app.main:app --host 127.0.0.1 --port 8001
+      # smoke: GET /health, GET /orders

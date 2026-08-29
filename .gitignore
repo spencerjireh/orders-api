@@ -6,4 +6,13 @@ dist/
 .venv/
 venv/
 .env
-.venv/
+
+node_modules/
+
+target/
+Cargo.lock.bak
+
+vendor/
+composer.lock.bak
+
+.cujo/
