@@ -27,3 +27,14 @@ def test_order_total_rounding() -> None:
     cent short of what the customer sees on the itemised receipt.
     """
     assert order_total([item(1.005), item(2.005)]) == 3.02
+
+
+def test_order_total_of_an_empty_order_is_zero() -> None:
+    """An order with no lines costs nothing, and still returns a float.
+
+    `sum` over an empty iterable returns its start value, so this pins that the
+    start is `Decimal("0")` and not `0` — the latter would make `order_total`
+    return an int here and a float everywhere else.
+    """
+    assert order_total([]) == 0.0
+    assert isinstance(order_total([]), float)
