@@ -1,0 +1,23 @@
+name: orders-go
+
+on:
+  pull_request:
+    paths:
+      - "services/orders-go/**"
+
+defaults:
+  run:
+    working-directory: services/orders-go
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      # test: go test ./... (run inside services/orders-go)
+      - run: go test ./...
+      # boot: go run .  (listens on 127.0.0.1:8003)
+      # smoke: GET /health, GET /orders

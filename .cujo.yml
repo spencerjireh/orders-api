@@ -1,8 +1,7 @@
 # Cujo policy for this repo. Read from the target branch, never from a PR.
-install: pip install -e '.[dev]'
-test: python -m pytest -q
-boot: uvicorn app.main:app --host 127.0.0.1 --port 8000
-smoke:
-  - GET /health
-  - GET /orders
-allow_hosts: []
+#
+# Deliberately empty: this repo is a polyglot stress target, and install,
+# test, and boot commands are inferred per service from the service's
+# manifest and its CI workflow under .github/workflows/. Nothing here names a
+# command on purpose; a PR cannot allowlist its own egress either, so
+# allow_hosts stays absent.

@@ -1,0 +1,21 @@
+name: orders-rust
+
+on:
+  pull_request:
+    paths:
+      - "services/orders-rust/**"
+
+defaults:
+  run:
+    working-directory: services/orders-rust
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      # test: cargo test (run inside services/orders-rust)
+      - run: cargo test
+      # boot: cargo run  (listens on 127.0.0.1:8004)
+      # smoke: GET /health, GET /orders

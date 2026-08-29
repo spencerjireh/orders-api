@@ -1,0 +1,25 @@
+name: orders-node
+
+on:
+  pull_request:
+    paths:
+      - "services/orders-node/**"
+
+defaults:
+  run:
+    working-directory: services/orders-node
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # install: npm install (run inside services/orders-node)
+      - run: npm install
+      # test: npm test (run inside services/orders-node)
+      - run: npm test
+      # boot: node src/server.mjs  (listens on 127.0.0.1:8002)
+      # smoke: GET /health, GET /orders

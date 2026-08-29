@@ -1,0 +1,20 @@
+{
+  "name": "orders-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo Node orders service used as a protected target application.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "boot": "node src/server.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "express": "5.1.0"
+  },
+  "devDependencies": {
+    "vitest": "3.1.4"
+  }
+}

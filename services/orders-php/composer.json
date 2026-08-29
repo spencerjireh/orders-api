@@ -1,0 +1,21 @@
+{
+    "name": "spencerjireh/orders-php",
+    "description": "Demo PHP orders service used as a protected target application.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "11.5.56"
+    },
+    "autoload": {
+        "psr-4": {
+            "Orders\\": "src/"
+        }
+    },
+    "config": {
+        "platform-check": false
+    }
+}
