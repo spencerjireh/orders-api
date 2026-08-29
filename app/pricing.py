@@ -23,6 +23,15 @@ def line_total(quantity: int, unit_price: float) -> Decimal:
     return amount.quantize(CENT, rounding=ROUND_HALF_UP)
 
 
+def line_totals(items: list[Line]) -> list[float]:
+    """Every line's rounded total, in order, as the floats the API returns.
+
+    `order_total` is the sum of exactly these numbers, so a receipt that lists
+    them adds up to the total rather than to a separately rounded figure.
+    """
+    return [float(line_total(item.quantity, item.unit_price)) for item in items]
+
+
 def order_total(items: list[Line]) -> float:
     """Sum of the rounded line totals, as the float the API returns."""
     total = sum((line_total(item.quantity, item.unit_price) for item in items), Decimal("0"))
