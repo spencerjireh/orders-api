@@ -30,6 +30,7 @@ def list_orders(
     limit: int = 50,
     offset: int = 0,
 ) -> list[OrderRead]:
+    """A page of orders, oldest first, optionally narrowed to one status."""
     orders = list(_orders.values())
     if status is not None:
         orders = [order for order in orders if order.status == status]
