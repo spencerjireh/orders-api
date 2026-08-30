@@ -19,8 +19,8 @@ class Line(Protocol):
 
 def line_total(quantity: int, unit_price: float) -> Decimal:
     """One line, rounded to the cent."""
-    amount = Decimal(str(unit_price)) * quantity
-    return amount.quantize(CENT, rounding=ROUND_HALF_UP)
+    unit = Decimal(str(unit_price)).quantize(CENT, rounding=ROUND_HALF_UP)
+    return (unit * quantity).quantize(CENT, rounding=ROUND_HALF_UP)
 
 
 def order_total(items: list[Line]) -> float:
