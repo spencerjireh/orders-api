@@ -46,6 +46,7 @@ def update_order(order_id: int, payload: OrderUpdate) -> OrderRead | None:
 
 
 def delete_order(order_id: int) -> bool:
+    """True when an order was removed, False when the id was already unknown."""
     return _orders.pop(order_id, None) is not None
 
 
