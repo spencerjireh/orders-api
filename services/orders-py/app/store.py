@@ -50,6 +50,7 @@ def delete_order(order_id: int) -> bool:
 
 
 def reset() -> None:
+    # Only the test suite calls this; the API never exposes it.
     """Forget every order and start ids from 1 again (tests)."""
     global _ids
     _orders.clear()
