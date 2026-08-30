@@ -9,6 +9,8 @@ summed, which is how the line items on a printed invoice add up.
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Protocol
 
+# A string, not 0.01: Decimal(0.01) captures the binary float's error,
+# which is the whole thing this module exists to avoid.
 CENT = Decimal("0.01")
 
 
