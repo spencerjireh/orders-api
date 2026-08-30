@@ -33,6 +33,8 @@ def list_orders(
     orders = list(_orders.values())
     if status is not None:
         orders = [order for order in orders if order.status == status]
+    # Slice after filtering, so offset and limit page through the filtered
+    # list rather than through the whole store.
     return orders[offset : offset + limit]
 
 
