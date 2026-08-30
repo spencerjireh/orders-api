@@ -22,6 +22,7 @@ def create_order(payload: OrderCreate) -> OrderRead:
 
 
 def get_order(order_id: int) -> OrderRead | None:
+    """One order by id, or None when no order carries that id."""
     return _orders.get(order_id)
 
 
