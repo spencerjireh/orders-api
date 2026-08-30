@@ -27,7 +27,7 @@ def get_order(order_id: int) -> OrderRead | None:
 
 def list_orders(
     status: OrderStatus | None = None,
-    limit: int = 50,
+    limit: int = 200,
     offset: int = 0,
 ) -> list[OrderRead]:
     orders = list(_orders.values())

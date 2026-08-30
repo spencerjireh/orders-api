@@ -26,7 +26,7 @@ def list_orders(
         OrderStatus | None,
         Query(alias="status", description="Filter by order status."),
     ] = None,
-    limit: Annotated[int, Query(gt=0, le=100)] = 50,
+    limit: Annotated[int, Query(gt=0, le=1000)] = 200,
     offset: Annotated[int, Query(ge=0)] = 0,
 ) -> list[OrderRead]:
     return store.list_orders(status=order_status, limit=limit, offset=offset)
