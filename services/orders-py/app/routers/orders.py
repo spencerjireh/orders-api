@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException, Query, status
 
 from app import store
 from app.models import OrderCreate, OrderRead, OrderStatus, OrderUpdate
+from app.telemetry import record_order_created
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
@@ -17,7 +18,9 @@ router = APIRouter(prefix="/orders", tags=["orders"])
     summary="Create an order",
 )
 def create_order(payload: OrderCreate) -> OrderRead:
-    return store.create_order(payload)
+    order = store.create_order(payload)
+    record_order_created(order.id)
+    return order
 
 
 @router.get("", response_model=list[OrderRead], summary="List orders")
