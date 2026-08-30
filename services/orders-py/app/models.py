@@ -1,4 +1,8 @@
-"""Pydantic models for the orders service."""
+"""Pydantic models for the orders service.
+
+The request models validate input; the read models add the fields the
+store owns (id, status, created_at) and the totals pricing computes.
+"""
 
 from datetime import datetime
 from enum import Enum
