@@ -24,6 +24,11 @@ def line_total(quantity: int, unit_price: float) -> Decimal:
 
 
 def order_total(items: list[Line]) -> float:
-    """Sum of the rounded line totals, as the float the API returns."""
+    """Sum of the rounded line totals, as the float the API returns.
+
+    No second quantize: every term is already exact at the cent, and adding
+    Decimals at the cent cannot produce a third decimal place. Rounding again
+    could only ever be a no-op, so it read as if the sum were lossy.
+    """
     total = sum((line_total(item.quantity, item.unit_price) for item in items), Decimal("0"))
-    return float(total.quantize(CENT, rounding=ROUND_HALF_UP))
+    return float(total)
