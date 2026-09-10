@@ -1,7 +1,7 @@
 """Simple in-memory order storage."""
 
 from datetime import UTC, datetime
-from itertools import count
+from itertools import count, islice
 
 from app.models import OrderCreate, OrderRead, OrderStatus, OrderUpdate
 
@@ -30,10 +30,21 @@ def list_orders(
     limit: int = 50,
     offset: int = 0,
 ) -> list[OrderRead]:
-    orders = list(_orders.values())
+    """One page of orders, filtered before it is paginated.
+
+    The filter stays ahead of the pagination, so a page is the same page it
+    always was; only the materialising changed. Iterating lazily and cutting
+    the page with islice means a request for the first page stops after it
+    has seen offset + limit matches, instead of building a list of every
+    order and then throwing most of it away.
+
+    islice requires non-negative bounds, which is what the route already
+    enforces (limit gt=0 le=100, offset ge=0).
+    """
+    orders = iter(_orders.values())
     if status is not None:
-        orders = [order for order in orders if order.status == status]
-    return orders[offset : offset + limit]
+        orders = (order for order in orders if order.status == status)
+    return list(islice(orders, offset, offset + limit))
 
 
 def update_order(order_id: int, payload: OrderUpdate) -> OrderRead | None:
