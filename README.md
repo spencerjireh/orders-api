@@ -36,3 +36,5 @@ request here can change one service or several, add a dependency in any of
 `requirements.txt`, `package.json`, `go.mod`, `Cargo.toml`, `conanfile.txt`,
 or `composer.json`, and the reviewer has to work out which install, which
 suite, and which boot the change touches — from the repository alone.
+
+Runs on Cujo's own sandbox runtime.
