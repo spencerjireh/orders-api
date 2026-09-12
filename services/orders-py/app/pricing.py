@@ -19,6 +19,8 @@ class Line(Protocol):
 
 def line_total(quantity: int, unit_price: float) -> Decimal:
     """One line, rounded to the cent."""
+    if quantity < 0:
+        raise ValueError("quantity must not be negative")
     amount = Decimal(str(unit_price)) * quantity
     return amount.quantize(CENT, rounding=ROUND_HALF_UP)
 

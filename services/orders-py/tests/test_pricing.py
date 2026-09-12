@@ -27,3 +27,10 @@ def test_order_total_rounding() -> None:
     cent short of what the customer sees on the itemised receipt.
     """
     assert order_total([item(1.005), item(2.005)]) == 3.02
+
+
+def test_line_total_rejects_negative_quantity() -> None:
+    import pytest
+
+    with pytest.raises(ValueError):
+        line_total(-1, 1.0)
