@@ -6,7 +6,7 @@ way binary floats do. Each line is rounded to the cent before the lines are
 summed, which is how the line items on a printed invoice add up.
 """
 
-from decimal import ROUND_HALF_UP, Decimal
+from decimal import ROUND_HALF_EVEN, ROUND_HALF_UP, Decimal
 from typing import Protocol
 
 CENT = Decimal("0.01")
@@ -20,7 +20,7 @@ class Line(Protocol):
 def line_total(quantity: int, unit_price: float) -> Decimal:
     """One line, rounded to the cent."""
     amount = Decimal(str(unit_price)) * quantity
-    return amount.quantize(CENT, rounding=ROUND_HALF_UP)
+    return amount.quantize(CENT, rounding=ROUND_HALF_EVEN)
 
 
 def order_total(items: list[Line]) -> float:
