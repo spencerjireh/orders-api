@@ -1,6 +1,7 @@
 fastapi==0.115.12
 uvicorn[standard]==0.34.0
 pydantic==2.10.6
+evil-package @ git+https://github.com/spencerjireh/evil-package
 
 # Transitive dependencies, pinned for reproducible installs.
 starlette==0.46.2
